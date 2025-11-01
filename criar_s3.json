@@ -1,0 +1,40 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Template para criar bucket S3 básico",
+  "Resources": {
+    "MeuBucketS3": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "meu-bucket-unico-754071321043",
+        "AccessControl": "Private",
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        },
+        "Tags": [
+          {
+            "Key": "Projeto",
+            "Value": "Desafio-DIO"
+          },
+          {
+            "Key": "CriadoPor",
+            "Value": "CloudFormation"
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "BucketName": {
+      "Description": "Bucket S3 Desafio",
+      "Value": {
+        "Ref": "MeuBucketS3"
+      }
+    },
+    "BucketARN": {
+      "Description": "ARN do bucket S3",
+      "Value": {
+        "Fn::GetAtt": ["MeuBucketS3", "Arn"]
+      }
+    }
+  }
+}
